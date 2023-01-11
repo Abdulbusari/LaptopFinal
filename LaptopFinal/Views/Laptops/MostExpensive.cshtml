@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Most Expensive";
+}
+
+@model Database
+
+
+@if (Model.results != null)
+{
+    @foreach (var L in Model.results)
+    {
+        <p>@L.Model</p>
+        <p>@L.Brand</p>
+        <p>@L.Price</p>
+        <p>@L.Year</p>
+        <p>-------------------------</p>
+    }
+
+}

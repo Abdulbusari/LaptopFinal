@@ -1,0 +1,24 @@
+﻿@model PricesModel
+
+<form method="post">
+
+    <div class="col-md-4">
+        <label asp-for="Price" class="form-label"></label>
+        <input type="text" asp-for="Price" placeholder=">100 or <100 or 100-200">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model.results != null)
+{
+    @foreach (var L in Model.results)
+    {
+        <p>@L.Model</p>
+        <p>@L.Price</p>
+        <p>@L.Brand</p>
+        <p>@L.Year</p>
+        <p>-------------------------</p>
+    }
+
+}

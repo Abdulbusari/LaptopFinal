@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Least Expensive";
+}
+
+@model Database
+
+
+
+@foreach (var L in Model.Laptops)
+{
+    <p>@L.Model</p>
+    <p>@L.Brand</p>
+    <p>@L.Price</p>
+    <p>@L.Year</p>
+    <p>-------------------------</p>
+}
+
