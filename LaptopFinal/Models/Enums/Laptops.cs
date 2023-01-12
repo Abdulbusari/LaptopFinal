@@ -1,4 +1,4 @@
-﻿namespace LaptopFinal.Models.Enums
+﻿namespace LaptopFinal.Models
 {
     public enum Laptops
     {

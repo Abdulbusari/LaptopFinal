@@ -1,5 +1,4 @@
 ﻿using LaptopFinal.Models;
-using LaptopFinal.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LaptopFinal.Controllers
@@ -71,6 +70,18 @@ namespace LaptopFinal.Controllers
             }
 
             return View(pricesModel);
+        }
+
+        public IActionResult Compare()
+        {
+            return View(new PricesModel());
+        }
+
+        [HttpPost]
+        public IActionResult Compare(PricesModel prices)
+        {
+
+            return View();
         }
 
 

@@ -1,0 +1,30 @@
+﻿@model PricesModel
+
+
+<form method="post">
+
+    <div class="col-md-4">
+        <label asp-for="Laptops" class="form-label"></label>
+        <select class="form-select" asp-for="Laptops" asp-items="Html.GetEnumSelectList<Laptops>()"></select>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Laptops" class="form-label"></label>
+        <select class="form-select" asp-for="Laptops" asp-items="Html.GetEnumSelectList<Laptops>()"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model != null && Model.results != null)
+{
+    @foreach (var L in Model.results)
+    {
+                <p>-------------------------</p>
+                <p>@L.Model</p>
+                <p>@L.Price</p>
+                <p>@L.Brand</p>
+                <p>@L.Year</p>
+                <p>@L.Id</p>
+                <p>-------------------------</p>
+    }
+}

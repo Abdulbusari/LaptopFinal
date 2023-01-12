@@ -1,4 +1,4 @@
-﻿using LaptopFinal.Models.Enums;
+﻿using LaptopFinal.Models;
 
 namespace LaptopFinal.Models
 {
@@ -8,6 +8,11 @@ namespace LaptopFinal.Models
         //public Laptops Laptops { get; set; }
         public List<Laptop> results { get; set; }
         public string Price { get; set; }
+
+        public Laptops Laptops { get; set; }
+       
+
+        
         
     }
 }
