@@ -4,27 +4,44 @@
 <form method="post">
 
     <div class="col-md-4">
-        <label asp-for="Laptops" class="form-label"></label>
-        <select class="form-select" asp-for="Laptops" asp-items="Html.GetEnumSelectList<Laptops>()"></select>
+        <label asp-for="laptopA" class="form-label"></label>
+        First Laptop
+        <select class="form-select" asp-for="laptopA" asp-items="Html.GetEnumSelectList<Laptops>()"></select>
     </div>
 
     <div class="col-md-4">
-        <label asp-for="Laptops" class="form-label"></label>
-        <select class="form-select" asp-for="Laptops" asp-items="Html.GetEnumSelectList<Laptops>()"></select>
+        <label asp-for="laptopB" class="form-label"></label>
+        Second Laptop
+        <select class="form-select" asp-for="laptopB" asp-items="Html.GetEnumSelectList<Laptops>()"></select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 @if (Model != null && Model.results != null)
 {
+    <table class="table">
+            <tr>
+               
+                <th>Model</th>
+                <th>Price</th>
+                <th>Brand</th>
+                <th>Year</th>
+                <th>Id</th>
+                
+            </tr>
     @foreach (var L in Model.results)
     {
-                <p>-------------------------</p>
-                <p>@L.Model</p>
-                <p>@L.Price</p>
-                <p>@L.Brand</p>
-                <p>@L.Year</p>
-                <p>@L.Id</p>
-                <p>-------------------------</p>
+       
+            <tr>
+               
+                <td>@L.Model</td>
+                <td>@L.Price</td>
+                <td>@L.Brand</td>
+                <td>@L.Year</td>
+                <td>@L.Id</td>
+                
+            </tr>
+              
     }
+    </table>
 }

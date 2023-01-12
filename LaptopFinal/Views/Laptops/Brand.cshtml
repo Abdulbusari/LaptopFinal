@@ -1,0 +1,43 @@
+﻿@model PricesModel
+
+
+<form method="post">
+
+    <div class="col-md-4">
+        <label asp-for="Brands" class="form-label"></label>
+       Select a Brand
+        <select class="form-select" asp-for="Brands" asp-items="Html.GetEnumSelectList<Brands>()"></select>
+    </div>
+
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model != null && Model.results != null)
+{
+    <table class="table">
+        <tr>
+
+            <th>Model</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Year</th>
+            <th>Id</th>
+
+        </tr>
+        @foreach (var L in Model.results)
+        {
+
+            <tr>
+
+                <td>@L.Model</td>
+                <td>@L.Price</td>
+                <td>@L.Brand</td>
+                <td>@L.Year</td>
+                <td>@L.Id</td>
+
+            </tr>
+
+        }
+    </table>
+}

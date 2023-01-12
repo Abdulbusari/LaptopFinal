@@ -3,7 +3,7 @@
     public enum Laptops
     {
         MacbookAir,
-        Surface,
+        SurfacePro,
         Latitude,
         Precision,
         MacbookPro

@@ -13,31 +13,20 @@ namespace LaptopFinal.Controllers
 
         public IActionResult MostExpensive()
         {
-            return View(new Database());
-        }
-
-        [HttpPost]
-        public IActionResult MostExpensive(Database db)
-        {
-           
-         db.results = db.Laptops.OrderByDescending(x => x.Price).ToList();
-            
-           
+            Database db = new Database();
+            db.results = db.Laptops.OrderByDescending(x => x.Price).Take(2).ToList();
             return View(db);
         }
 
+       
         public IActionResult LeastExpensive()
         {
-            return View(new Database());
-        }
-
-        [HttpPost]
-        public IActionResult LeastExpensive(Database db)
-        {
-            db.Laptops.OrderBy(x => x.Price).ToList();
-
+            Database db = new Database();
+            db.results = db.Laptops.OrderBy(x => x.Price).Take(2).ToList();
             return View(db);
         }
+
+        
 
         public IActionResult Budget()
         {
@@ -80,8 +69,30 @@ namespace LaptopFinal.Controllers
         [HttpPost]
         public IActionResult Compare(PricesModel prices)
         {
+            prices.results = database.Laptops.Where(x => (
+            x.Model.Replace(" ", string.Empty) == prices.laptopA.ToString()
+            || x.Model.Replace(" ", string.Empty) == prices.laptopB.ToString()))
+            .Take(2).
+            OrderByDescending(x => (x.Model.Replace(" ", string.Empty) == prices.laptopA.ToString()))
+            .ToList();
+           
+            return View(prices);
+        }
 
-            return View();
+        public IActionResult Brand()
+        {
+            return View(new PricesModel());
+        }
+
+
+        [HttpPost]
+        public IActionResult Brand(PricesModel prices)
+        {
+            prices.results = database.Laptops.Where(x => (
+            x.Brand.Replace(" ", string.Empty) == prices.Brands.ToString()
+            )).ToList();
+
+            return View(prices);
         }
 
 
