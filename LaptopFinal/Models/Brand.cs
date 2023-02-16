@@ -10,5 +10,9 @@
             Id = id;
             Name = name;
         }
+        public Brand()
+        {
+
+        }
     }
 }

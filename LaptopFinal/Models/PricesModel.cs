@@ -10,7 +10,10 @@ namespace LaptopFinal.Models
         
         public List<Laptop> results { get; set; }
         public Brands Brands { get; set; }
-        public string Price { get; set; }
+        //change this to "filter string" and fix all errors
+        public string filterString { get; set; }
+        public string Ordering { get; set; }
+        public string filterType { get; set; }
 
         public Laptops Laptops { get; set; }
 

@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,19 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@foreach (var laptop in Model)
+{
+    <tr>
+        <td>@laptop.Brand</td>
+        <td>@laptop.Model</td>
+        <td>@laptop.Price</td>
+        <td>@laptop.Year</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@laptop.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@laptop.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@laptop.Id">Delete</a>
+        </td>
+    </tr>
+}
+

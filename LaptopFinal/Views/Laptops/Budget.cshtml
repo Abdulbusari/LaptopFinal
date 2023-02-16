@@ -3,8 +3,8 @@
 <form method="post">
 
     <div class="col-md-4">
-        <label asp-for="Price" class="form-label"></label>
-        <input type="text" asp-for="Price" placeholder=">100 or <100 or 100-200">
+        <label asp-for="filterString" class="form-label"></label>
+        <input type="text" asp-for="filterString" placeholder=">100 or <100 or 100-200">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -12,15 +12,29 @@
 
 @if (Model.results != null)
 {
-    @foreach (var L in Model.results)
-    {
-        <p>-------------------------</p>
-        <p>@L.Model</p>
-        <p>@L.Price</p>
-        <p>@L.Brand</p>
-        <p>@L.Year</p>
-        <p>@L.Id</p>
-        <p>-------------------------</p>
-    }
+    <table class="table">
+        <tr>
 
+            <th>Model</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Year</th>
+            <th>Id</th>
+
+        </tr>
+        @foreach (var L in Model.results)
+        {
+
+            <tr>
+
+                <td>@L.Model</td>
+                <td>$@L.Price</td>
+                <td>@L.Brand.Name</td>
+                <td>@L.Year</td>
+                <td>@L.Id</td>
+
+            </tr>
+
+        }
+    </table>
 }

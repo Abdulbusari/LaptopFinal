@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "View All";
+}
+@model Dictionary<Brand, List<Laptop>>
+
+
+<div>
+
+    @foreach (var kvp in Model)
+    {
+        <h4>@kvp.Key.Name</h4>
+        <ul>
+            @foreach (var lp in kvp.Value)
+            {
+                <li>@lp.Model</li>
+            }
+        </ul>
+    }
+</div>
+
+

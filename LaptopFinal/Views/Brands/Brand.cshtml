@@ -1,0 +1,65 @@
+﻿@model PricesModel
+
+
+<form method="post">
+
+    <div class="col-md-4">
+        <label asp-for="Brands" class="form-label"></label>
+       Select a Brand
+        <select class="form-select" asp-for="Brands" asp-items="Html.GetEnumSelectList<Brands>()"></select>
+
+
+        <label asp-for="Ordering" class="form-label"></label>
+        Select An Ordering
+        <select class="form-select" asp-for="Ordering">
+            <option value="Price Ascending">Price Ascending</option>
+            <option value="Price Descending">Price Descending</option>
+            <option value="Year Ascending">Year Ascending</option>
+            <option value="Year Descending">Year Descending</option>
+        </select>
+
+        <br /> 
+        <label asp-for="filterString" class="form-label"></label>
+        <br />
+
+        <select class="form-label" asp-for="filterType">
+            <option value="Price">Price </option>
+            <option value="Year">Year</option>
+        </select>
+
+        <input type="text" asp-for="filterString" placeholder=">100 or <100 or 100-200">
+
+        <br /> 
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model != null && Model.results != null)
+{
+    <table class="table">
+        <tr>
+
+            <th>Model</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Year</th>
+            <th>Id</th>
+
+        </tr>
+        @foreach (var L in Model.results)
+        {
+
+            <tr>
+
+                <td>@L.Model</td>
+                <td>$@L.Price</td>
+                <td>@L.Brand</td>
+                <td>@L.Year</td>
+                <td>@L.Id</td>
+
+            </tr>
+
+        }
+    </table>
+}

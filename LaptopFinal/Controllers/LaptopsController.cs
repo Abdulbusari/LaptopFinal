@@ -38,22 +38,22 @@ namespace LaptopFinal.Controllers
         {
             pricesModel.results = database.Laptops.ToList();
 
-            if (!string.IsNullOrWhiteSpace(pricesModel.Price))
+            if (!string.IsNullOrWhiteSpace(pricesModel.filterString))
             {
-                if (pricesModel.Price.Contains("<"))
+                if (pricesModel.filterString.Contains("<"))
                 {
-                    pricesModel.Price = pricesModel.Price.Replace('<', ' ');
-                    pricesModel.results = pricesModel.results.Where(s => s.Price <= int.Parse(pricesModel.Price)).ToList();
+                    pricesModel.filterString = pricesModel.filterString.Replace('<', ' ');
+                    pricesModel.results = pricesModel.results.Where(s => s.Price <= int.Parse(pricesModel.filterString)).ToList();
                 }
-                else if (pricesModel.Price.Contains(">"))
+                else if (pricesModel.filterString.Contains(">"))
                 {
-                    pricesModel.Price = pricesModel.Price.Replace('>', ' ');
-                    pricesModel.results = pricesModel.results.Where(s => s.Price >= int.Parse(pricesModel.Price)).ToList();
+                    pricesModel.filterString = pricesModel.filterString.Replace('>', ' ');
+                    pricesModel.results = pricesModel.results.Where(s => s.Price >= int.Parse(pricesModel.filterString)).ToList();
                 }
-                else if (pricesModel.Price.Contains("-"))
+                else if (pricesModel.filterString.Contains("-"))
                 {
-                    pricesModel.Price = pricesModel.Price.Replace('-', ' ');
-                    List<string> prices = pricesModel.Price.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+                    pricesModel.filterString = pricesModel.filterString.Replace('-', ' ');
+                    List<string> prices = pricesModel.filterString.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
                     pricesModel.results = pricesModel.results.Where(s => s.Price >= int.Parse(prices[0]) && s.Price <= int.Parse(prices[1])).ToList();
                 }
             }
@@ -79,20 +79,17 @@ namespace LaptopFinal.Controllers
             return View(prices);
         }
 
-        public IActionResult Brand()
+
+        public IActionResult NewLaptop()
         {
-            return View(new PricesModel());
+            return View();
         }
 
-
         [HttpPost]
-        public IActionResult Brand(PricesModel prices)
+        public IActionResult NewLaptopConfirmation(Laptop laptop, int brandName)
         {
-            prices.results = database.Laptops.Where(x => (
-            x.Brand.Replace(" ", string.Empty) == prices.Brands.ToString()
-            )).ToList();
-
-            return View(prices);
+            laptop.Brand = database.Brands[brandName];
+            return View(laptop);
         }
 
 

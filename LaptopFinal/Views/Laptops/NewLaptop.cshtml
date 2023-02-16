@@ -1,0 +1,25 @@
+﻿@model Laptop
+
+<form action="/Laptops/NewLaptopConfirmation" method="post">
+
+    <div class="col-md-4">
+        <label asp-for="Model" class="form-label"></label>
+        <input type="text" asp-for="Model" placeholder="Enter a Laptop Model">
+        <br /><br />
+        <label asp-for="Id" class="form-label"></label>
+        <input type="text" asp-for="Id" placeholder="Enter an Id number">
+        <br /><br />
+        <label asp-for="Year" class="form-label"></label>
+        <input type="text" asp-for="Year" placeholder="Enter a Year">
+        <br /><br />
+        <label asp-for="Price" class="form-label"></label>
+        <input type="text" asp-for="Price" placeholder="Enter a Laptop Price">
+        <br /><br />
+        <label asp-for="Brand" class="form-label"></label>
+        <select class="form-select" asp-for="Brand.Name" name="brandName" asp-items="Html.GetEnumSelectList<Brands>()"></select>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

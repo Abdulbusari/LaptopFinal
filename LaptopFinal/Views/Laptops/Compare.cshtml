@@ -20,28 +20,28 @@
 @if (Model != null && Model.results != null)
 {
     <table class="table">
+        <tr>
+
+            <th>Model</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Year</th>
+            <th>Id</th>
+
+        </tr>
+        @foreach (var L in Model.results)
+        {
+
             <tr>
-               
-                <th>Model</th>
-                <th>Price</th>
-                <th>Brand</th>
-                <th>Year</th>
-                <th>Id</th>
-                
-            </tr>
-    @foreach (var L in Model.results)
-    {
-       
-            <tr>
-               
+
                 <td>@L.Model</td>
-                <td>@L.Price</td>
-                <td>@L.Brand</td>
+                <td>$@L.Price</td>
+                <td>@L.Brand.Name</td>
                 <td>@L.Year</td>
                 <td>@L.Id</td>
-                
+
             </tr>
-              
-    }
+
+        }
     </table>
 }
